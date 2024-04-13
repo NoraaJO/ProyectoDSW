@@ -1,0 +1,5 @@
+CREATE TABLE Justificacion(
+	id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	idActividad INT NOT NULL,
+	arcJustificacion VARCHAR(256) NOT NULL
+);

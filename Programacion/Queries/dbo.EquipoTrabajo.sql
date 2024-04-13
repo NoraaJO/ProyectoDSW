@@ -1,0 +1,4 @@
+CREATE TABLE EquiposTrabajo(
+	id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	anno INT NOT NULL
+);

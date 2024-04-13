@@ -1,0 +1,5 @@
+CREATE TABLE ProferesEncargado(
+	id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	idProfesor INT NOT NULL,
+	idActividad INT NOT NULL
+)

@@ -1,0 +1,6 @@
+CREATE TABLE FechaRecordatorio(
+	id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	idActividad INT NOT NULL,
+	Fecha DATE NOT NULL
+);
+

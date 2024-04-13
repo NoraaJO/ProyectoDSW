@@ -1,0 +1,5 @@
+CREATE TABLE PlanTrabajo(
+	id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	idEquipoTrabajo INT NOT NULL,
+	periodo INT NOT NULL
+)

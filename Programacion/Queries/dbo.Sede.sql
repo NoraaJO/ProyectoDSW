@@ -1,0 +1,4 @@
+CREATE TABLE Sede(
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	nombre VARCHAR(32)
+);
