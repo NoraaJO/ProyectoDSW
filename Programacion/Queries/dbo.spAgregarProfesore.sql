@@ -37,14 +37,13 @@ BEGIN
 						WHERE @InSede = S.nombre);
 			SET @Codigo = @InSede+'-'+CAST(@Count AS VARCHAR(10));
 		
-			INSERT INTO dbo.Usuario(correo, idSede, idTipo, password)
-			VALUES(@InCorreo, (SELECT id FROM dbo.Sede WHERE nombre = @InSede), 1, @InPassword)
+			INSERT INTO dbo.Usuario(correo, idSede, idTipo, password, Nombre, Apellido1, Apellido2, celular)
+			VALUES(@InCorreo, (SELECT id FROM dbo.Sede WHERE nombre = @InSede), 1, @InPassword, @InNombre, 
+			@InApellido1, @InApellido2, @InCelular)
 
 			SET @Count = SCOPE_IDENTITY()
-			INSERT INTO dbo.Profesor(id, Nombre, Apellido1, Apellido2, celular, numOficina, extension, imagen, 
-									Codigo)
-			VALUES(@Count, @InNombre, @InApellido1, @InApellido2, @InCelular, @InNumOficina, 
-					@InExtension, @InImagen, @Codigo)
+			INSERT INTO dbo.Profesor(id, numOficina, extension, imagen, Codigo)
+			VALUES(@Count, @InNumOficina, @InExtension, @InImagen, @Codigo)
 			SET @OutResult = 1
 			RETURN @OutResult
 	END TRY
@@ -55,6 +54,6 @@ BEGIN
 	
 	SET NOCOUNT OFF;
 END
-GO
+
 
 

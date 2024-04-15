@@ -3,6 +3,7 @@ CREATE PROCEDURE obtenerDatosProfeso(
 )
 AS
 BEGIN
+	SET NOCOUNT ON;
 	DECLARE @OutResult INT
 	BEGIN TRY
 		IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE @inIdProfesor = id)
@@ -32,5 +33,6 @@ BEGIN
 	BEGIN CATCH
 		SET @OutResult = -2
 		RETURN @OutResult 
-	END CATCH 
+	END CATCH
+	SET NOCOUNT OFF;
 END 

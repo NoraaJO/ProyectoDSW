@@ -3,6 +3,7 @@ CREATE PROCEDURE obtenerDatosActividad(
 )
 AS
 BEGIN
+	SET NOCOUNT ON;
 	DECLARE @OutResult INT
 	BEGIN TRY
 		IF NOT EXISTS(SELECT 1 FROM dbo.Actividades)
@@ -35,4 +36,5 @@ BEGIN
 		SET @OutResult = -2
 		RETURN @OutResult 
 	END CATCH
+	SET NOCOUNT OFF;
 END

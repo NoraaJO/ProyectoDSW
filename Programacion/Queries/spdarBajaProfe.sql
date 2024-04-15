@@ -5,6 +5,7 @@ CREATE PROCEDURE darDeBajaProfeEq(
 )
 AS
 BEGIN
+	SET NOCOUNT ON;
 	DECLARE @OutResult INT
 	BEGIN TRY
 		DECLARE @idSede INT
@@ -19,7 +20,7 @@ BEGIN
 		ELSE
 		BEGIN
 			SET @idSede = (SELECT idSede FROM dbo.Usuario WHERE  id = @inIdProfesor)
-			IF  NOT (@idSede = (SELECT idSede FROM dbo.Usuario WHERe id = @inIdAsisAdminis))
+			IF NOT (@idSede = (SELECT idSede FROM dbo.Usuario WHERe id = @inIdAsisAdminis))
 			BEGIN
 				SET @OutResult = -3
 				RETURN @OutResult 
@@ -38,4 +39,5 @@ BEGIN
 		SET @OutResult = -4
 		RETURN @OutResult 
 	END CATCH
+	SET NOCOUNT OFF;
 END

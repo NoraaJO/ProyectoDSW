@@ -5,6 +5,7 @@
 )
 AS
 BEGIN
+	SET NOCOUNT ON; 
 	DECLARE @OutResult INT
 	BEGIN TRY
 		
@@ -17,7 +18,7 @@ BEGIN
 		END
 		ELSE
 			IF NOT EXISTS(SELECT 1 FROM dbo.Usuario a INNER JOIN dbo.Sede S ON a.idSede = S.id
-			WHERE @inIdAsisAdmin = S.id AND S.nombre = 'CA')
+			WHERE @inIdAsisAdmin = A.id AND S.nombre = 'CA')
 			BEGIN
 				SET @OutResult = -2
 				RETURN @OutResult 
@@ -37,12 +38,12 @@ BEGIN
 
 			UPDATE dbo.ProfesoresGuia
 			SET isCordinador = 1
-			WHERE idProfesor = @inIdProfe
+			WHERE idProfesor = @inIdProfe AND idEquipo = @inIdEquipo
 
 	END TRY 
 	BEGIN CATCH
 		SET @OutResult = -5
 		RETURN @OutResult 
 	END CATCH
-	
+	SET NOCOUNT OFF;
 END

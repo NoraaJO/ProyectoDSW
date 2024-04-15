@@ -1,10 +1,11 @@
-﻿CREATE PROCEDURE obtenerDatosEquipo(
+﻿ALTER PROCEDURE obtenerDatosEquipo(
 	@inIdEquipo INT
 )
 AS
 BEGIN
 	BEGIN TRY
-		SELECT 
+		SELECT
+			P.id,
 			P.Codigo,
 			U.Nombre,
 			U.Apellido1,

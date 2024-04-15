@@ -4,6 +4,7 @@ CREATE PROCEDURE obtenerProxActividad(
 )
 AS
 BEGIN
+	SET NOCOUNT ON;
 	DECLARE @OutResult INT
 	BEGIN TRY
 		IF NOT EXISTS(SELECT 1 FROM dbo.PlanTrabajo WHERE @inIdPlanActividad = id)
@@ -36,4 +37,5 @@ BEGIN
 		SET @OutResult = -2
 		RETURN @OutResult
 	END CATCH
+	SET NOCOUNT OFF;
 END

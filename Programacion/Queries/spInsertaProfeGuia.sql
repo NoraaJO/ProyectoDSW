@@ -1,4 +1,4 @@
-ALTER PROCEDURE AgregarProfesorEquipo(
+CREATE PROCEDURE AgregarProfesorEquipo(
 	@inIdEquipo INT,
 	@inidProfesor INT, 
 	@inidUsuario INT
@@ -25,7 +25,7 @@ BEGIN
 				1
 				FROM dbo.ProfesoresGuia E
 				INNER JOIN dbo.Usuario U ON U.id = E.idProfesor
-				WHERE @idSede = E.id
+				WHERE @idSede = u.idSede
 			 )
 			 BEGIN
 				SET @OutResult = -2
@@ -51,7 +51,7 @@ BEGIN
 	END TRY
 	BEGIN CATCH
 		
-		SET @OutResult = -4
+		SET @OutResult = -5
 		RETURN @OutResult
 	
 	END CATCH

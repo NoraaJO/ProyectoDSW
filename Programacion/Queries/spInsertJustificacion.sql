@@ -8,7 +8,7 @@ BEGIN
 	
 	DECLARE @OutResult INT;
 	BEGIN TRY 
-		IF NOT EXISTS(SELECT 1 FROM dbo.Actividades A WHERE A.id = @inIdActividad) AND @inJustificacion IS NOT NULL
+		IF NOT EXISTS(SELECT 1 FROM dbo.Actividades A WHERE A.id = @inIdActividad) AND @inJustificacion IS NULL
 		BEGIN
 			SET @OutResult = -1;
 			RETURN @OutResult;
@@ -22,7 +22,7 @@ BEGIN
 		END 
 	END TRY
 	BEGIN CATCH
-		SET @OutResult = -1;
+		SET @OutResult = -2;
 		RETURN @OutResult; 
 	END CATCH
 	SET NOCOUNT OFF;

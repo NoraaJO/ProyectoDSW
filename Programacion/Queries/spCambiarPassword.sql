@@ -11,17 +11,21 @@ BEGIN
 		BEGIN
 			SET @OutResult = -1;
 		END
-		IF LEN(@inNewPassword) != 8
-		BEGIN
-			SET @OutResult = -2;
-		END
 		ELSE
 		BEGIN
-			UPDATE dbo.Usuario
-			SET password = @inNewPassword
-			WHERE correo = @inCorreo
-			SET @OutResult = 1;
+			IF LEN(@inNewPassword) != 8
+			BEGIN
+				SET @OutResult = -2;
+			END
+			ELSE
+				BEGIN
+					UPDATE dbo.Usuario
+					SET password = @inNewPassword
+					WHERE correo = @inCorreo
+					SET @OutResult = 1;
+				END
 		END
+		
 		RETURN @OutResult
 	END TRY
 

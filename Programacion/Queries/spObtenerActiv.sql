@@ -18,7 +18,7 @@ BEGIN
 			FROM dbo.Actividades A
 			INNER JOIN dbo.Estado E ON E.id = A.idTipo
 			WHERE A.idPlanTrabajo = @inIdPlanTrab
-			ORDER BY A.id ASC			
+			ORDER BY A.fechaRealizacion ASC			
 		END
 	END TRY
 	BEGIN CATCH

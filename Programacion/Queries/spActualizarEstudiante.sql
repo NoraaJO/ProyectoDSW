@@ -9,6 +9,7 @@
 )
 AS
 BEGIN
+	SET NOCOUNT ON;
 	DECLARE @OutResult INT;
 	BEGIN TRY
 		DECLARE @sede INT;
@@ -28,7 +29,7 @@ BEGIN
 				RETURN @OutResult;
 			END
 			
-			IF NOT EXISTS(SELECT 1 FROM dbo.Usuario WHERE @inCorreo = correo AND @inIdEstudian <> id)
+			IF EXISTS(SELECT 1 FROM dbo.Usuario WHERE @inCorreo = correo AND @inIdEstudian <> id)
 			BEGIN
 				SET @OutResult = -3;
 				RETURN @OutResult;
@@ -55,4 +56,5 @@ BEGIN
 		SET @OutResult = -4
 		RETURN @OutResult
 	END CATCH
+	SET NOCOUNT OFF;
 END

@@ -22,7 +22,7 @@ BEGIN
 		END
 	END TRY
 	BEGIN CATCH
-		SET @OutResult = -1
+		SET @OutResult = -2
 		RETURN @OutResult
 	END CATCH
 	SET NOCOUNT OFF;

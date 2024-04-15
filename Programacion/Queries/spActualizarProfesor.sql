@@ -12,6 +12,7 @@
 )
 AS
 BEGIN
+	SET NOCOUNT ON;
 	DECLARE @OutResult INT
 	BEGIN TRY
 
@@ -72,5 +73,5 @@ BEGIN
 		RETURN @OutResult
 		
 	END CATCH
-
+	SET NOCOUNT OFF;
 END
